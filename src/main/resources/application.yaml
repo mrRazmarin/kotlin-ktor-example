@@ -1,0 +1,23 @@
+ktor:
+  deployment:
+    port: 8085
+  application:
+    modules:
+      - com.example.ApplicationKt.module
+
+  db:
+    driverClassName: org.postgresql.Driver
+    jdbcURL: ${DB_URL}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    maximumPoolSize: 10
+
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: "example.com"
+    audience: "exampleAudience"
+    realm: "Ktor Sample API"
+
+  health:
+    enabled: true
+    path: "/health"
