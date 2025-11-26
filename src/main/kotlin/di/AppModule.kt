@@ -8,6 +8,6 @@ import repository.UserRepositoryImpl
 
 val appModule = module {
     single { AppConfig(get()) } // Конфиг приложения через DI
-    single<UserRepository> { UserRepositoryImpl() } // интерфейс через реализацию
+    single <UserRepository> { UserRepositoryImpl() } // интерфейс через реализацию
     single { DatabaseFactory } // Singleton для работы с базой
 }

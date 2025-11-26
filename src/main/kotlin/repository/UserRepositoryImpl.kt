@@ -1,7 +1,7 @@
 package repository
 
-import models.User
 import models.dto.user.UserCreateDto
+import models.dto.user.UserResponseDto
 import models.tables.Users
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
@@ -12,9 +12,9 @@ import org.jetbrains.exposed.sql.update
 
 // Реализация методов из интерфейса
 class UserRepositoryImpl : UserRepository {
-    override fun getAll(): List<User> = transaction {
+    override fun getAll(): List<UserResponseDto> = transaction {
         Users.selectAll().map {
-            User(it[Users.id], it[Users.username], it[Users.email])
+            UserResponseDto(it[Users.id], it[Users.username], it[Users.email])
         }
     }
 
