@@ -10,6 +10,7 @@ val exposed_version = "0.61.0" // ORM Exposed для работы с PGSql
 val koin_version = "4.1.1" // Koin для DI
 val postgres_version = "42.7.8" // JDBC драйвер PG
 val jwt_version = "4.5.0" // Java JWT для работы с токенами
+val swagger_version = "3.3.2"
 
 
 group = "org.example"
@@ -57,6 +58,10 @@ dependencies {
     // Kotlin тестовый раннер (JUnit)
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:${kotlin_version}")
     testImplementation("io.ktor:ktor-server-test-host-jvm:3.3.2")
+
+    // OpenAPI и Swagger UI для Ktor
+    implementation("io.ktor:ktor-server-openapi:$swagger_version")
+    implementation("io.ktor:ktor-server-swagger:$swagger_version")
 }
 
 tasks.test {
