@@ -6,8 +6,8 @@ import io.ktor.server.application.install
 import io.ktor.server.application.log
 import io.ktor.server.auth.Authentication
 import io.ktor.server.netty.EngineMain
-import routes.Health.healthRoutes
 import io.ktor.server.auth.jwt.*
+import io.ktor.server.plugins.swagger.swaggerUI
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import jwt.JwtConfig
@@ -15,6 +15,7 @@ import jwt.JwtConfig
 import org.koin.ktor.ext.get
 import org.koin.ktor.plugin.Koin
 import routes.auth.authRoutes
+import routes.register.registerRoutes
 import routes.user.userRoutes
 
 
@@ -54,13 +55,12 @@ fun Application.module() {
     }
 
     routing {
+        authRoutes()
+        registerRoutes()
         route("/api/v1") {
-            healthRoutes()
-            authRoutes()
             userRoutes()
+            swaggerUI(path = "docs", swaggerFile = "openapi/documentation.yaml")
         }
     }
-
-
     log.info("Ktor server started with db: ${config.jdbcUrl}, user: ${config.dbUser}")
 }
