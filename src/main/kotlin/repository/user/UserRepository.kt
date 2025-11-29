@@ -1,7 +1,7 @@
-package repository
+package repository.user
 
-import models.dto.user.UserResponseDto
-import models.dto.user.UserCreateDto
+import models.dto.user.requests.UserResponseDto
+import models.dto.user.requests.UserCreateDto
 
 // Интерфейс-репозиторий для CRUD операций с сущностью User
 interface UserRepository {
