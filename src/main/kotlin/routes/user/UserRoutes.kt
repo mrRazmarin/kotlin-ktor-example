@@ -10,10 +10,9 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import io.ktor.server.routing.put
 import io.ktor.server.routing.routing
-import models.dto.user.UserCreateDto
-import models.dto.validate
+import models.dto.user.requests.UserCreateDto
 import models.validation.user.UserValidation
-import repository.UserRepository
+import repository.user.UserRepository
 import org.koin.ktor.ext.get
 
 fun Application.userRoutes() {
