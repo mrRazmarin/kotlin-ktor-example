@@ -8,4 +8,4 @@ data class UserCreateDto(
     override val username: String,
     override val email: String,
     val password: String
-) : IUserBaseRequestDto
+) : IUserRequestDto
