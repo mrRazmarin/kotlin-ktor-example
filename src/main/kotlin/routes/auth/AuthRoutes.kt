@@ -17,6 +17,7 @@ fun Application.authRoutes() {
     routing {
         post("/login") {
             val login = call.receive<LoginRequest>()
+
             // Обычно проверяется пароль и наличие такого пользователя
             val token = jwtConfig.generateToken(login.username)
             call.respond(mapOf("token" to token))
