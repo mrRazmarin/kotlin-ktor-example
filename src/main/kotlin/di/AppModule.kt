@@ -2,6 +2,7 @@ package di
 
 import config.AppConfig
 import db.DatabaseFactory
+import models.validation.AbstractValidator
 import models.validation.register.RegisterValidation
 import models.validation.register.RegisterValidationImpl
 import org.koin.dsl.module
@@ -15,5 +16,5 @@ val appModule = module {
     single <UserRepository> { UserRepositoryImpl() } // интерфейс через реализацию
     single { DatabaseFactory } // Singleton для работы с базой
     single <RegisterRepository> { RegisterRepositoryImpl() } // Добавляем репу в DI
-    single <RegisterValidation>{ RegisterValidationImpl() }
+    single <RegisterValidation> { RegisterValidationImpl() }
 }
