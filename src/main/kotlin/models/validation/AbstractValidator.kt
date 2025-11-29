@@ -1,10 +1,12 @@
 package models.validation
 
-abstract class AbstractValidator {
+abstract class AbstractValidator<T> : IValidator<T> {
 
-    fun isNotEmpty(value: String?): Boolean = value != null && value.isNotBlank()
+    override fun hasError(dto: T): Boolean = validateAll(dto).isNotEmpty()
 
-    protected fun isEmail(value: String): Boolean = value.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex())
+    abstract override fun validateAll(dto: T): List<String>
+
+    protected fun isBlank(value: String): Boolean = value.isBlank()
 
     protected fun checkPresenceCapitalLetter(value: String): Boolean = value.any { it.isLetter() && it.isUpperCase() }
 
@@ -12,6 +14,6 @@ abstract class AbstractValidator {
 
     protected fun hasMinLength(value: String, minLength: Int): Boolean = value.count() >= minLength
 
-    protected fun isNumeric(value: Any): Boolean = value is Int || value is Long
+    protected fun isNumeric(value: T): Boolean = value is Int || value is Long
 
 }
